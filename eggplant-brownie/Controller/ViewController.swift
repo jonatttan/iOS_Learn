@@ -16,19 +16,17 @@ class ViewController: UIViewController {
     
     @IBAction func adicionar(_ sender: Any) {
         
-        //Abaixo a forma 'if let' de tratar a entrada, que no caso nao eh opcional para criar objeto.
-        if let nomeRefeicao = nomeTexField?.text, let felicidadeRefeicao = felicidadeTextField?.text {
-            
-            let nome = nomeRefeicao
-            
-            if let felicidade = Int(felicidadeRefeicao) {
-                
-                let refeicao = Refeicao(nome: nome, felicidade: felicidade)
-                print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
-            } else {
-                print("Erro ao cadastrar refeicao")
-            }
+        guard let nomeRefeicao = nomeTexField?.text else {
+            return
         }
+        
+        guard let felicidadeRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeRefeicao) else {
+            return
+        }
+        
+        let refeicao = Refeicao(nome: nomeRefeicao, felicidade: felicidade)
+        print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
+        
     }
 }
 
