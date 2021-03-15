@@ -17,7 +17,7 @@ class Refeicao {
         self.felicidade = felicidade
     }
     
-    // MARK - Metodos
+    // MARK: - Metodos
     
     func totalDeCalorias() -> Double{
         var total = 0.0
