@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RefeicoesTableViewController: UITableViewController {
+class RefeicoesTableViewController: UITableViewController, ViewControllerDelegate {
     
     var refeicoes = [Refeicao(nome: "Macarrao", felicidade: 5),
                      Refeicao(nome: "Pizza", felicidade: 3),
@@ -34,7 +34,7 @@ class RefeicoesTableViewController: UITableViewController {
         
         if segue.identifier == "adicionar" {
             if let viewController = segue.destination as? ViewController { // O 'as' está convertendo p/ ViewController o que estiver em 'segue.destination'
-                viewController.tableViewController = self //Aqui, se não for um ViewController, a função tabViewController não estará disponível para uso, resultando em crash
+                viewController.delegate = self //Aqui, se não for um ViewController, a função tabViewController não estará disponível para uso, resultando em crash
             }
         }
     }

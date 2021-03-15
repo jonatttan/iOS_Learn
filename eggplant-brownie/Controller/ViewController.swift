@@ -7,9 +7,13 @@
 
 import UIKit
 
+protocol ViewControllerDelegate { //Tambem conhecido como Interface, no JAVA, por exemplo
+    func add(_ refeicao: Refeicao)
+}
+
 class ViewController: UIViewController {
     
-    var tableViewController: RefeicoesTableViewController?
+    var delegate: ViewControllerDelegate?
     
     //var nomeTexField: UITextField = UITextField() //instanciamos, mas não é a mais correta para o nosso uso no momento
     @IBOutlet var nomeTexField: UITextField? // Indicamos pro Swift que esta variável terá um valor
@@ -29,7 +33,7 @@ class ViewController: UIViewController {
         let refeicao = Refeicao(nome: nomeRefeicao, felicidade: felicidade)
         print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
         
-        tableViewController?.add(refeicao)
+        delegate?.add(refeicao)
         navigationController?.popViewController(animated: true)
     }
 }
