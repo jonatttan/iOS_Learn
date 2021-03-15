@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="YWl-5X-GdN" kind="relationship" relationship="rootViewController" id="c8B-2K-9wl"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zPq-7b-kjm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,6 +47,13 @@
                             <outlet property="delegate" destination="YWl-5X-GdN" id="d8q-iu-XcB"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="sTw-cx-FG2">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="zBW-Nj-oaj">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="adicionar" id="USh-uC-1K5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvP-UJ-AaI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -95,6 +105,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="wsK-P6-API"/>
                     <connections>
                         <outlet property="felicidadeTextField" destination="NpG-J5-SWZ" id="4qP-s1-sIc"/>
                         <outlet property="nomeTexField" destination="Ccl-vu-iz5" id="cTp-u7-hpT"/>

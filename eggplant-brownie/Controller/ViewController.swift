@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    var tableViewController: RefeicoesTableViewController?
+    
     //var nomeTexField: UITextField = UITextField() //instanciamos, mas não é a mais correta para o nosso uso no momento
     @IBOutlet var nomeTexField: UITextField? // Indicamos pro Swift que esta variável terá um valor
     @IBOutlet var felicidadeTextField: UITextField?
@@ -27,6 +29,8 @@ class ViewController: UIViewController {
         let refeicao = Refeicao(nome: nomeRefeicao, felicidade: felicidade)
         print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
         
+        tableViewController?.add(refeicao)
+        navigationController?.popViewController(animated: true)
     }
 }
 
