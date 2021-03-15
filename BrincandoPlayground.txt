@@ -294,5 +294,101 @@ print(minhaJanta.felicidade)
 
 
 
+====================
+
+
+
+
+// Usando orientacao a objeto e metodo construtor. Criando e printando objetos.
+// Criando/ instanciando objeto lista da classe (Item) dentro da classe (Refeicao) e manipulando seus valores
+
+import UIKit
+
+class Refeicao {
+    
+    // MARK: - Atributos
+    var nome: String
+    var felicidade: String
+    var itens: Array<Item> = []
+    
+    // MARK: - Construtor
+    init(nome: String, felicidade: String) { //Este construtor serve para usar atributos de classe sem inicializacao. Tambem para tratar a entrada, nao sendo possiviel instanciar o objeto sem os dados abaixo no ato.
+        
+        self.nome = nome
+        self.felicidade = felicidade
+    }
+    
+    // MARK - Metodos
+    
+    func totalDeCalorias() -> Double{
+        var total = 0.0
+        
+        for item in itens{
+            total += item.calorias
+        }
+        return total
+    }
+
+}
+
+class Item { //Seria como uma lista de itens da refeicao, ja ha um array na classe refeicao instanciada com seu tipo
+    let nome: String
+    let calorias: Double
+    
+    init(nome: String, calorias: Double) {
+        self.nome = nome
+        self.calorias = calorias
+    }
+}
+
+let feijao = Item(nome: "Feijao", calorias: 45.9)
+let arroz = Item(nome: "Arroz", calorias: 12)
+let contraFile = Item(nome: "Contra File", calorias: 30)
+
+let refeicao = Refeicao(nome: "Almoco", felicidade: "4")
+refeicao.itens.append(arroz)
+refeicao.itens.append(feijao)
+refeicao.itens.append(contraFile)
+
+//print(refeicao.itens.first?.nome) //Extraindo dado. Mas use o de baixo, + interessante e nao traz 'optional'
+
+if let primeiroItemDaLista = refeicao.itens.first {
+    print(primeiroItemDaLista.nome)
+}
+
+print(refeicao.totalDeCalorias())
+
+
+
+
+====================
+
+
+
+
+
+
+====================
+
+
+
+
+
+
+====================
+
+
+
+
+
+
+====================
+
+
+
+
+
+
+====================
 
 
