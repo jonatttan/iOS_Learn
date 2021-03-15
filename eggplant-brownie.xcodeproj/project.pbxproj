@@ -25,6 +25,7 @@
 		8974129425FA5B9100B39CAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8974129625FA5B9100B39CAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		89A7CF5325FBB6F500D9F1D5 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../../MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		89F8CC7125FEE08C00573097 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +58,7 @@
 		8974128725FA5B8F00B39CAA /* eggplant-brownie */ = {
 			isa = PBXGroup;
 			children = (
+				89F8CC7025FEE07800573097 /* Testes_codigo */,
 				89F8CC6E25FEA47500573097 /* Template */,
 				89F8CC6D25FEA46B00573097 /* View */,
 				89F8CC6C25FEA45E00573097 /* Model */,
@@ -91,6 +93,14 @@
 			children = (
 			);
 			path = Template;
+			sourceTree = "<group>";
+		};
+		89F8CC7025FEE07800573097 /* Testes_codigo */ = {
+			isa = PBXGroup;
+			children = (
+				89F8CC7125FEE08C00573097 /* MyPlayground.playground */,
+			);
+			path = Testes_codigo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -1,0 +1,298 @@
+import UIKit
+
+// Eis o código principal do nosso projeto
+
+/*
+ Comentário
+ com mais de
+ uma linha
+ Comente apenas o necessário
+ */
+//Comand + / comenta e descomenta várias linhas de uma só vez
+
+let nome = "Churros"
+let felicidade: Int = 5
+let calorias:Double = 75.3
+let vegetal: Bool = true
+
+//func alimentoConsumido() {
+//    print("O alimento consumido foi: \(nome)")
+//}
+
+//alimentoConsumido()
+//alimentoConsumido()
+
+func alimentoConsumido(nome: String, caloria: Double) {
+    print("O alimento consumido foi: \(nome), com calorias: \(caloria)")
+}
+
+//alimentoConsumido(nome: nome, caloria: calorias) // Essa chamada foi melhorada abaixo, adicionando o "_ " na definição da função para ocultação de parãmetros e usar apenas os argumentos.
+
+alimentoConsumido(nome: nome, caloria: calorias)
+
+
+====================
+
+import UIKit
+
+let caloria1 = 50.5
+let caloria2 = 100
+let caloria3 = 300
+let caloria4 = 500
+
+let totalDeCalorias = [50.5, 100, 300, 500] //Isso é uma lista, Array
+print (totalDeCalorias)
+
+////Primeira forma de percorrer um array com for
+//for i in 0...3 {
+//    print("Valor \(i):")
+//    print(totalDeCalorias[i])
+//} //Não muito eficiente, tem de ajustar o tamanho do array na declaração caso ele mude
+
+
+//// Segunda forma de percorrer um array com for
+//for i in 0...totalDeCalorias.count-1 {
+//    print(i)
+//    print(totalDeCalorias[i])
+//} // Não muito eficiente, tem de se subtrair um
+
+
+// Terceira forma de percorrer um array com for
+for i in totalDeCalorias {
+    print("\(i) calorias.")
+}
+
+
+====================
+
+
+
+import UIKit
+
+let totalDeCalorias = [50.5, 100]
+
+func todasCalorias(totalDeCalorias: Array<Double>) -> Double{ // uma opção seria explicitar apenas o tipo ": [Double]". Obs: Os colchetes simbolizam uma lista.
+    // O "-> Double" indica que este método terá um retorno do tipo Double, necessário em caso de return.
+    var total = 0.0 // Aqui o valor era zero, sendo um Int, mas terá de receber um Double lá na frente e daria erro, por isso é 0.0. Outra opção seria especificar como tipo ": Double".
+    
+    for caloria in totalDeCalorias {
+        total += caloria
+    }
+    
+    return total
+}
+
+
+let total = todasCalorias(totalDeCalorias: [50.5, 100, 400])
+let totalDois = todasCalorias(totalDeCalorias: totalDeCalorias)
+
+print(total)
+print(totalDois)
+
+
+
+====================
+
+
+import UIKit
+
+//====**=== Deixando de declarar variáveis primitivas e iniciando com objetos.
+
+//Criar a primeira refeição
+let nome: String = "Macarrão"
+let felicidade: String = "5"
+
+//Criar segunda refeição
+let nome2: String = "Churros"
+let felicidade2: String = "4"
+// ----------
+
+
+// Criar uma classe que agrupe as características
+class Refeicao {
+    var nome: String = "Macarrão"
+    let felicidade: String = "5"
+}
+
+let refeicao: Refeicao = Refeicao() //Instância de objeto com tipagem explícita
+let refeicaoDois = Refeicao() //Instância de objeto sem tipagem explicita
+
+refeicao.nome = "Jujuba"
+
+print(refeicao.nome)
+print(refeicaoDois.nome)
+// ---------
+
+class Refeicao2 {
+    var nome: String = "Churros"
+    var felicidade: String = "4"
+}
+
+var refeicao2 = Refeicao2()
+
+print(refeicao2.nome)
+
+
+
+
+====================
+
+//Orientação à Objetos Removendo "optional" com práticas nem tão boas
+
+import UIKit
+
+
+// Criar uma classe que agrupe as características
+class Refeicao {
+    var nome: String? 
+    var felicidade: String?
+	// Esse "?" é para não poder inicializar variável vazia.
+}
+
+let refeicao: Refeicao = Refeicao() //Instância de objeto com tipagem explícita
+refeicao.nome = "Lasanha" //Por mais que o objeto seja instanciado como constante "let", seus atributos seguem conforme dita a classe, aqui é variável "var" 
+
+print(refeicao.nome) // Desse modo ele vai imprimir o opcional "optional"
+
+print(refeicao.nome!) // Desse modo ele não vai imprimir o "optional"
+// Cuidado ao utilizar a linha acima, isso se chama "force unwrap". Evite o "!", há formas mais seguras de extrair valores, esse modo é uma má prática e se o valor for nulo "nil", vai dar crash.
+
+if refeicao.nome != nil { // Essa é uma das formas de se evitar o crash pelo uso de force unwrap, não é uma prática muito comum.
+    print(refeicao.nome!)
+}
+
+
+
+====================
+
+//Orientação à Objetos Removendo "optional" com boas práticas
+
+import UIKit
+
+// Criar uma classe que agrupe as características
+class Refeicao {
+    var nome: String?
+    var felicidade: String?
+    // Esse "?" é para não poder inicializar variável vazia.
+}
+
+let refeicao: Refeicao = Refeicao() //Instância de objeto com tipagem explícita
+refeicao.nome = "Lasanha" //Por mais que o objeto seja instanciado como constante "let", seus atributos seguem conforme dita a classe, aqui é variável "var"
+
+print(refeicao.nome) // Desse modo ele vai imprimir o opcional "optional"
+
+//Boas práticas para se extrair valores opcionais:
+if let nome = refeicao.nome { //Se houver valor, executará o código
+    print(nome)
+} // Obs: O que foi criado dentro do escopo do "if let" só pode ser utilizado nele.
+
+
+====================
+
+
+//Orientação à Objetos Removendo "optional" com boas práticas 2 (A MELHOR)
+
+import UIKit
+
+// Criar uma classe que agrupe as características
+class Refeicao {
+    var nome: String?
+    var felicidade: String?
+    // Esse "?" é para não poder inicializar variável vazia.
+}
+
+let refeicao: Refeicao = Refeicao() //Instância de objeto com tipagem explícita
+refeicao.nome = "Lasanha" //Por mais que o objeto seja instanciado como constante "let", seus atributos seguem conforme dita a classe, aqui é variável "var"
+
+//print(refeicao.nome) // Desse modo ele vai imprimir o opcional "optional"
+
+//Segunda boa prática para se extrair valores opcionais
+// Nome da prática: guard let
+func exibeNomeDaRefeicao() {
+    
+    guard let nome = refeicao.nome else {
+        print("Parece que o seu valor é nil") // Printa essa linha caso seja valor nil
+        return
+    } // Obs: Ao contrário do "if let", o que foi criado aqui pode ser utilizado fora.
+    
+    print(nome)
+}
+
+exibeNomeDaRefeicao()
+
+// Obs: Sempre que possível, fuja das variáveis opcionais "?" e dos "var", usando antes o "let" (constantes) e, se necessário, mude para "var".
+//Obs2: Evite trabalhar com opcionais "!", use "?" indicando ser conteúdo opcional. Sempre que for extrair dado, use "guard let" ou "if let", NUNCA "force let".
+//Obs3: O guard let tem de estar dentro de uma função.
+
+
+====================
+
+
+// Outro caso de retorno de opcionais, como tratar
+import UIKit
+
+let numero = Int("3") //Mude aqui pra verificar
+
+if let n = numero {
+    print("Conseguimos converter no 'if let', e é: \(n)")
+}
+else {
+    print("Não conseguimos converter no 'if let'.")
+}
+
+
+func converte() -> Int{
+    guard let convertido = numero else{
+        print("Infelizmente, não conseguimos converter o valor no 'guard let'. :(")
+        return 0
+    }
+    print("Conseguimos converter o valor no 'guard let': ")
+    return convertido
+}
+
+let valor = converte()
+
+if valor != 0 {
+    print("Eis o valor \(valor).")
+}
+
+
+
+====================
+
+
+// Usando orientacao a objeto e metodo construtor. Criando e printando objetos.
+//Aqui também evitamos o uso de opcionais.
+
+import UIKit
+
+class Refeicao {
+    
+    // MARK: - Atributos
+    var nome: String
+    var felicidade: String
+    
+    // MARK: - Construtor
+    init(nome: String, felicidade: String) { //Este construtor serve para usar atributos de classe sem inicializacao. Tambem para tratar a entrada, nao sendo possiviel instanciar o objeto sem os dados abaixo no ato.
+        
+        self.nome = nome
+        self.felicidade = felicidade
+        
+    }
+
+}
+
+let meuAlmoco = Refeicao(nome: "Lasanha", felicidade: "5")
+let minhaJanta = Refeicao(nome: "Macarronada", felicidade: "4")
+
+print(meuAlmoco.nome)
+print(meuAlmoco.felicidade)
+
+print(minhaJanta.nome)
+print(minhaJanta.felicidade)
+
+
+
+
+
+
