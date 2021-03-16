@@ -37,7 +37,6 @@ class AdicionarItensViewController: UIViewController {
 
     }
     
-    // MARK:
     
     // MARK: - IBAction
 
@@ -45,14 +44,23 @@ class AdicionarItensViewController: UIViewController {
         
         guard let nome = nomeTextField.text, let calorias = caloriasTextField.text else { return }
         
+        if nome == "" {
+            Alerta(controller: self).exibe(mensagem: "Digite nome")
+        }
+        
         if let caloria = Double(calorias) {
             let item = Item(nome: nome, calorias: caloria)
-            delegate?.add(item)
+            
+            //delegate?.add(item) //Esse eh um exemplo de se trabalhar com opcionais, eh seguro, nao da crash, mas preferimos o guard let para verifica-lo e tornar um nao opcional na sequencia.
+            guard let delegate = delegate else { return }
+            delegate.add(item)
+            
             navigationController?.popViewController(animated: true)
+        } else {
+            Alerta(controller: self).exibe(mensagem: "Digite caloria")
         }
         
         // Navegar para a proxima tela, utiliza-se: navigationController.push()
         // Navegar para a tela anterior, utiliza-se: navigationController.pop()
-    }
-    
+    }    
 }

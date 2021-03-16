@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89017E602600C66A008648E7 /* Alerta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89017E5F2600C66A008648E7 /* Alerta.swift */; };
+		89017E632600DEF7008648E7 /* RemoveRefeicaoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89017E622600DEF7008648E7 /* RemoveRefeicaoViewController.swift */; };
+		89017E66260129A0008648E7 /* RefeicaoDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89017E65260129A0008648E7 /* RefeicaoDao.swift */; };
 		891091DF25FFA5920039CC49 /* RefeicoesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891091DE25FFA5920039CC49 /* RefeicoesTableViewController.swift */; };
 		891091E325FFFA780039CC49 /* AdicionarItensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 891091E125FFFA780039CC49 /* AdicionarItensViewController.swift */; };
 		891091E425FFFA780039CC49 /* AdicionarItensViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 891091E225FFFA780039CC49 /* AdicionarItensViewController.xib */; };
@@ -16,11 +19,15 @@
 		8974129025FA5B8F00B39CAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8974128E25FA5B8F00B39CAA /* Main.storyboard */; };
 		8974129225FA5B9100B39CAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8974129125FA5B9100B39CAA /* Assets.xcassets */; };
 		8974129525FA5B9100B39CAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8974129325FA5B9100B39CAA /* LaunchScreen.storyboard */; };
+		897D2CCB260137A5003B1EC3 /* ItemDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897D2CCA260137A5003B1EC3 /* ItemDao.swift */; };
 		89F8CC7525FEF44900573097 /* Refeicao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8CC7425FEF44800573097 /* Refeicao.swift */; };
 		89F8CC7825FEF4F000573097 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F8CC7725FEF4F000573097 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		89017E5F2600C66A008648E7 /* Alerta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerta.swift; sourceTree = "<group>"; };
+		89017E622600DEF7008648E7 /* RemoveRefeicaoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveRefeicaoViewController.swift; sourceTree = "<group>"; };
+		89017E65260129A0008648E7 /* RefeicaoDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicaoDao.swift; sourceTree = "<group>"; };
 		891091DE25FFA5920039CC49 /* RefeicoesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefeicoesTableViewController.swift; sourceTree = "<group>"; };
 		891091E125FFFA780039CC49 /* AdicionarItensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdicionarItensViewController.swift; sourceTree = "<group>"; };
 		891091E225FFFA780039CC49 /* AdicionarItensViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdicionarItensViewController.xib; sourceTree = "<group>"; };
@@ -32,6 +39,7 @@
 		8974129125FA5B9100B39CAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8974129425FA5B9100B39CAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8974129625FA5B9100B39CAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		897D2CCA260137A5003B1EC3 /* ItemDao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDao.swift; sourceTree = "<group>"; };
 		89F8CC7125FEE08C00573097 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		89F8CC7425FEF44800573097 /* Refeicao.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Refeicao.swift; sourceTree = "<group>"; };
 		89F8CC7725FEF4F000573097 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -68,8 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				8974128825FA5B8F00B39CAA /* AppDelegate.swift */,
-				89F8CC7025FEE07800573097 /* Testes_codigo */,
 				89F8CC6E25FEA47500573097 /* Template */,
+				89F8CC7025FEE07800573097 /* Testes_codigo */,
 				89F8CC6D25FEA46B00573097 /* View */,
 				89F8CC6C25FEA45E00573097 /* Model */,
 				89F8CC7C25FEF8B300573097 /* Controller */,
@@ -86,6 +94,9 @@
 			children = (
 				89F8CC7425FEF44800573097 /* Refeicao.swift */,
 				89F8CC7725FEF4F000573097 /* Item.swift */,
+				89017E5F2600C66A008648E7 /* Alerta.swift */,
+				89017E65260129A0008648E7 /* RefeicaoDao.swift */,
+				897D2CCA260137A5003B1EC3 /* ItemDao.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -120,6 +131,7 @@
 				8974128C25FA5B8F00B39CAA /* ViewController.swift */,
 				891091DE25FFA5920039CC49 /* RefeicoesTableViewController.swift */,
 				891091E125FFFA780039CC49 /* AdicionarItensViewController.swift */,
+				89017E622600DEF7008648E7 /* RemoveRefeicaoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -195,8 +207,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89017E602600C66A008648E7 /* Alerta.swift in Sources */,
 				89F8CC7825FEF4F000573097 /* Item.swift in Sources */,
 				8974128D25FA5B8F00B39CAA /* ViewController.swift in Sources */,
+				89017E632600DEF7008648E7 /* RemoveRefeicaoViewController.swift in Sources */,
+				897D2CCB260137A5003B1EC3 /* ItemDao.swift in Sources */,
+				89017E66260129A0008648E7 /* RefeicaoDao.swift in Sources */,
 				891091E325FFFA780039CC49 /* AdicionarItensViewController.swift in Sources */,
 				8974128925FA5B8F00B39CAA /* AppDelegate.swift in Sources */,
 				891091DF25FFA5920039CC49 /* RefeicoesTableViewController.swift in Sources */,

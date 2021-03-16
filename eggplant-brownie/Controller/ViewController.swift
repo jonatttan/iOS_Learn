@@ -16,16 +16,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //MARK: - IBOutlet
     
     
-    @IBOutlet weak var itensTableView: UITableView!
+    @IBOutlet weak var itensTableView: UITableView?
     
     // MARK: - Atributos
     
     var delegate: AdicionaRefeicaoDelegate?
-//    var itens : [String] = ["Molho de Tomate","Manjericão","Queijo apimentado","Azeitonas"]
-    var itens: [Item] = [Item(nome: "Molho de Tomate", calorias: 13),
-                        Item(nome: "Queijo", calorias: 54),
-                        Item(nome: "Manjericão", calorias: 2),]
-    
+    var itens: [Item] = []
     var itensSelecionados: [Item] = []
     
     // MARK: - IBOutlets
@@ -39,6 +35,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() { //Botao criado programaticamente
         let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(adicionarItens))
         navigationItem.rightBarButtonItem = botaoAdicionaItem
+        recuperaItens()
+    }
+    
+    func recuperaItens() {
+        itens = ItemDao().recupera()
     }
     
     @objc func adicionarItens() { //Funcao para navegar ate a view de add itens
@@ -48,8 +49,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func add(_ item: Item) {
         itens.append(item)
-        itensTableView.reloadData()
-        
+        ItemDao().save(itens)
+        //Esse if-else trata erro de vinculo com a tabela ou algum outro impeditivo na atualizacao.
+        if let tableView = itensTableView {
+            tableView.reloadData()
+        } else {
+            // codEgo
+            Alerta(controller: self).exibe(mensagem: "Nao foi possivel atualizar a tabela")
+        }        
     }
     
     
@@ -87,7 +94,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             celula.accessoryType = .none
             
             let item = itens[indexPath.row]
-            if let position = itensSelecionados.index(of: item) {
+            if let position = itensSelecionados.firstIndex(of: item) {
                 itensSelecionados.remove(at: position)
                 
                 // teste
@@ -103,23 +110,32 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     // MARK: - IBActions
     
-    @IBAction func adicionar(_ sender: Any) {
+    func recuperaRefeicaoDoFormulario() -> Refeicao? {
         
         guard let nomeRefeicao = nomeTexField?.text else {
-            return
+            //Alerta(controller: self).exibe(mensagem: "Erro ao ler o campo nome.")
+            return nil
         }
-        
         guard let felicidadeRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeRefeicao) else {
-            return
+            //Alerta(controller: self).exibe(mensagem: "Erro ao ler o campo felicidade.")
+            return nil
         }
         
         let refeicao = Refeicao(nome: nomeRefeicao, felicidade: felicidade, itens: itensSelecionados)
         
-        refeicao.itens = itensSelecionados
-        print("comi \(refeicao.nome) e fiquei com felicidade: \(refeicao.felicidade)")
+        return refeicao
+    }
+    
+    @IBAction func adicionar(_ sender: Any) {
         
-        delegate?.add(refeicao)
-        navigationController?.popViewController(animated: true)
+        if let refeicao = recuperaRefeicaoDoFormulario() {
+            delegate?.add(refeicao)
+            navigationController?.popViewController(animated: true)
+        } else {
+            Alerta(controller: self).exibe(mensagem: "Erro ao ler o formulario.")
+        }
+        
+        
     }
 }
 
