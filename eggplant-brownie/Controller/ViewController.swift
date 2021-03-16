@@ -13,8 +13,8 @@ protocol AdicionaRefeicaoDelegate { //Tambem conhecido como Interface, no JAVA, 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AdicionaItensDelegate {
     
-    //MARK: - IBOutlet
     
+    //MARK: - IBOutlet
     
     @IBOutlet weak var itensTableView: UITableView?
     
@@ -59,7 +59,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }        
     }
     
-    
     // MARK: - UITableViewDataSource
     
     //Conta itens para criar celulas
@@ -103,10 +102,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                      print(itemSelected.calorias)
                 }
             }
-            
         }
     }
-    
     
     // MARK: - IBActions
     

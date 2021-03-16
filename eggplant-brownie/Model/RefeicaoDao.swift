@@ -29,9 +29,9 @@ class RefeicaoDao {
             return refeicoesSalvas
         } catch {
             print(error.localizedDescription)
+            
             return []
         }
-        
     }
     
     func recuperaCaminho() -> URL? {
