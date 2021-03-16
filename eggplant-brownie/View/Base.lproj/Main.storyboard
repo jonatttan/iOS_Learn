@@ -124,6 +124,7 @@
                     <navigationItem key="navigationItem" id="wsK-P6-API"/>
                     <connections>
                         <outlet property="felicidadeTextField" destination="NpG-J5-SWZ" id="4qP-s1-sIc"/>
+                        <outlet property="itensTableView" destination="MSo-ut-XVl" id="ocp-E6-vMJ"/>
                         <outlet property="nomeTexField" destination="Ccl-vu-iz5" id="cTp-u7-hpT"/>
                     </connections>
                 </viewController>

@@ -11,7 +11,12 @@ protocol AdicionaRefeicaoDelegate { //Tambem conhecido como Interface, no JAVA, 
     func add(_ refeicao: Refeicao)
 }
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, AdicionaItensDelegate {
+    
+    //MARK: - IBOutlet
+    
+    
+    @IBOutlet weak var itensTableView: UITableView!
     
     // MARK: - Atributos
     
@@ -27,6 +32,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet var nomeTexField: UITextField? // Indicamos pro Swift que esta variável terá um valor
     @IBOutlet var felicidadeTextField: UITextField?
+    
+    
+    //MARK: - View Life Cycle
+    
+    override func viewDidLoad() { //Botao criado programaticamente
+        let botaoAdicionaItem = UIBarButtonItem(title: "Adicionar", style: .plain, target: self, action: #selector(adicionarItens))
+        navigationItem.rightBarButtonItem = botaoAdicionaItem
+    }
+    
+    @objc func adicionarItens() { //Funcao para navegar ate a view de add itens
+        let adicionarItensViewController = AdicionarItensViewController(delegate: self)
+        navigationController?.pushViewController(adicionarItensViewController, animated: true)
+    }
+    
+    func add(_ item: Item) {
+        itens.append(item)
+        itensTableView.reloadData()
+        
+    }
+    
     
     // MARK: - UITableViewDataSource
     
@@ -68,7 +93,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 // teste
                 for itemSelected in itensSelecionados {
                     print(itemSelected.nome)
-                    print(itemSelected.calorias)
+                     print(itemSelected.calorias)
                 }
             }
             
@@ -87,8 +112,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let felicidadeRefeicao = felicidadeTextField?.text, let felicidade = Int(felicidadeRefeicao) else {
             return
         }
-        
-//        let refeicao = Refeicao(nome: nomeRefeicao, felicidade: felicidadeRefeicao, itens: itensSelecionados)
         
         let refeicao = Refeicao(nome: nomeRefeicao, felicidade: felicidade, itens: itensSelecionados)
         
